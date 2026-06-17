@@ -28,13 +28,28 @@ print("=== DNA 검사 및 코돈 번역 프로그램 ===")
 dna_strand1 = input("첫 번째 DNA 가닥을 입력하세요: ").upper()
 dna_strand2 = input("두 번째 DNA 가닥을 입력하세요: ").upper()
 
+valid_bases = ["A", "T", "C", "G"]
+invalid_char_found = False
 
-if len(dna_strand1) != len(dna_strand2):
+for base in dna_strand1:
+    if base not in valid_bases:
+        invalid_char_found = True
+
+for base in dna_strand2:
+    if base not in valid_bases:
+        invalid_char_found = True
+
+if invalid_char_found == True:
+    print("\n[1단계 실패] A, T, C, G 외에 잘못된 염기 문자가 포함되어 있습니다. 프로그램을 종료합니다.")
+
+elif len(dna_strand1) != len(dna_strand2):
     print("\n[1단계 실패] 두 가닥의 글자 수가 다릅니다. 프로그램을 종료합니다.")
-
+          
 else:
-    print("\n[1단계 통과] 두 가닥의 글자 수가 일치합니다. 2단계로 진행합니다.")
+    print("\n[1단계 통과] 정상적인 DNA 가닥입니다. 2단계로 진행합니다.")
     print("=" * 50)
+
+
     
     
     print("[2단계 진행] 염기쌍 상보적 결합 규칙 검사 중...")
